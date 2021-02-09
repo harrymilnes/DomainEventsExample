@@ -17,6 +17,7 @@ namespace DomainEvents.Core.DomainEventHandlers
         public void Handle(AuditDomainEvent auditDomainEvent)
         {
             _efContext.AuditLog.Add(AuditLog.Create(auditDomainEvent.Description));
+            _efContext.SaveChanges();
         }
     }
 }

@@ -21,6 +21,6 @@ namespace DomainEvents.Core.Data.Entities
         }
 
         [NotMapped]
-        public ICollection<AbstractDomainEvent> DomainEvents { get; set; }
+        public ICollection<AbstractDomainEvent> DomainEvents { get; set; } = new List<AbstractDomainEvent>();
     }
 }
