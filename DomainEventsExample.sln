@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainEventsExample", "DomainEventsExample\DomainEventsExample.csproj", "{F635B401-AF65-4BDA-BE8D-23F42E7C30B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainEvents.Core", "DomainEvents.Core\DomainEvents.Core.csproj", "{07F1E6EE-F87B-4E7D-B05F-329A16BB73E2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F635B401-AF65-4BDA-BE8D-23F42E7C30B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F635B401-AF65-4BDA-BE8D-23F42E7C30B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F635B401-AF65-4BDA-BE8D-23F42E7C30B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F635B401-AF65-4BDA-BE8D-23F42E7C30B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07F1E6EE-F87B-4E7D-B05F-329A16BB73E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07F1E6EE-F87B-4E7D-B05F-329A16BB73E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07F1E6EE-F87B-4E7D-B05F-329A16BB73E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07F1E6EE-F87B-4E7D-B05F-329A16BB73E2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
