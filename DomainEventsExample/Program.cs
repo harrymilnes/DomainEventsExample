@@ -15,11 +15,11 @@ namespace DomainEventsExample
         private static IServiceCollection ConfigureServices()
         {
             IServiceCollection services = new ServiceCollection();
-                
-            services.AddSingleton<IEmployeeRecordRepository, EmployeeRecordRepository>();
+            
             services.AddSingleton<Application>();
-            services.AddSingleton<IDomainEventDispatcher, DomainEventDispatcher>();
-            services.AddSingleton<IDomainEventHandler<AuditDomainEvent>, AuditDomainEventHandler>();
+            services.AddTransient<IEmployeeRecordRepository, EmployeeRecordRepository>();
+            services.AddTransient<IDomainEventDispatcher, DomainEventDispatcher>();
+            services.AddTransient<IDomainEventHandler<AuditDomainEvent>, AuditDomainEventHandler>();
             services.AddDbContext<EfContext>();
 
             return services;
@@ -30,11 +30,11 @@ namespace DomainEventsExample
             var services = ConfigureServices();
             var serviceProvider = services.BuildServiceProvider();
             
-            var application = serviceProvider.GetService<Application>();
-            if (application == null)
-                throw new Exception("Well, shit.");
+            var applicationService = serviceProvider.GetService<Application>();
+            if (applicationService == null)
+                throw new Exception($"{nameof(applicationService)} Not found!");
             
-            application.Run();
+            applicationService.Run();
             Console.ReadLine();
         }
     }

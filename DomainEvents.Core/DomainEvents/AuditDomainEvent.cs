@@ -1,8 +1,8 @@
-﻿using DomainEvents.Core.DomainEvents.Abstract;
+﻿using DomainEvents.Core.DomainEvents.Interfaces;
 
 namespace DomainEvents.Core.DomainEvents
 {
-    public class AuditDomainEvent : AbstractDomainEvent
+    public class AuditDomainEvent : IDomainEvent
     {
         public string Description { get; private set; }
 

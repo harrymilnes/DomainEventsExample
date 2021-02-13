@@ -18,7 +18,7 @@ namespace DomainEvents.Core.Data.Repository
         public EmployeeRecord Create()
         {
             var employeeRecord = EmployeeRecord.Create("Freshly created employeeRecord");
-            employeeRecord.DomainEvents.Add(AuditDomainEvent.Create("Deleted"));
+            employeeRecord.DomainEvents.Add(AuditDomainEvent.Create("Created"));
             _efContext.EmployeeRecord.Add(employeeRecord);
             _efContext.SaveChanges();
             return employeeRecord;
@@ -27,7 +27,7 @@ namespace DomainEvents.Core.Data.Repository
         public EmployeeRecord Update()
         {
             var employeeRecord = _efContext.EmployeeRecord.First();
-            employeeRecord.Update("Updated employeeRecord");
+            employeeRecord.Update("Updated");
             _efContext.SaveChanges();
             return employeeRecord;
         }

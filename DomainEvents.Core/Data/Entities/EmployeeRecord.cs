@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using DomainEvents.Core.DomainEvents;
-using DomainEvents.Core.DomainEvents.Abstract;
+using DomainEvents.Core.DomainEvents.Interfaces;
 
 namespace DomainEvents.Core.Data.Entities
 {
@@ -34,6 +34,6 @@ namespace DomainEvents.Core.Data.Entities
         }
 
         [NotMapped]
-        public ICollection<AbstractDomainEvent> DomainEvents { get; set; } = new List<AbstractDomainEvent>();
+        public ICollection<IDomainEvent> DomainEvents { get; } = new List<IDomainEvent>();
     }
 }

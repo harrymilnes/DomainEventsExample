@@ -1,9 +1,9 @@
-﻿using DomainEvents.Core.DomainEvents.Abstract;
+﻿using DomainEvents.Core.DomainEvents.Interfaces;
 
 namespace DomainEvents.Core.DomainEventDispatcher.Interfaces
 {
     public interface IDomainEventDispatcher
     {
-        void Dispatch(AbstractDomainEvent abstractDomainEvent);
+        void Dispatch(IDomainEvent domainEvent);
     }
 }

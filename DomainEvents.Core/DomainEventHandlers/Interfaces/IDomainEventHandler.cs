@@ -1,8 +1,8 @@
-﻿using DomainEvents.Core.DomainEvents.Abstract;
+﻿using DomainEvents.Core.DomainEvents.Interfaces;
 
 namespace DomainEvents.Core.DomainEventHandlers.Interfaces
 {
-    public interface IDomainEventHandler<in TDomainEvent> where TDomainEvent : AbstractDomainEvent
+    public interface IDomainEventHandler<in TDomainEvent> where TDomainEvent : IDomainEvent
     {
         void Handle(TDomainEvent auditDomainEvent);
     }

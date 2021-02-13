@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
-using DomainEvents.Core.DomainEvents.Abstract;
+using DomainEvents.Core.DomainEvents.Interfaces;
 
 namespace DomainEvents.Core.Data.Entities
 {
     public interface IEntity
     {
-        ICollection<AbstractDomainEvent> DomainEvents { get; set; }
+        public int Id { get; }
+        ICollection<IDomainEvent> DomainEvents { get; }
     }
 }

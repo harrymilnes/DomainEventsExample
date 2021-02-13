@@ -2,9 +2,8 @@
 using System.Linq;
 using DomainEvents.Core.DomainEventDispatcher.Interfaces;
 using DomainEvents.Core.DomainEventHandlers;
-using DomainEvents.Core.DomainEventHandlers.Abstract;
 using DomainEvents.Core.DomainEventHandlers.Interfaces;
-using DomainEvents.Core.DomainEvents.Abstract;
+using DomainEvents.Core.DomainEvents.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DomainEvents.Core.DomainEventDispatcher
@@ -18,20 +17,21 @@ namespace DomainEvents.Core.DomainEventDispatcher
             _serviceProvider = serviceProvider;
         }
 
-        public void Dispatch(AbstractDomainEvent abstractDomainEvent)
+        public void Dispatch(IDomainEvent domainEvent)
         {
-            var handlerType = typeof(IDomainEventHandler<>).MakeGenericType(abstractDomainEvent.GetType());
-            var genericWrapperType = typeof(BaseDomainEventHandler<>).MakeGenericType(abstractDomainEvent.GetType());
-            var eventHandlerServices = _serviceProvider.GetServices(handlerType);
-
-            if (!eventHandlerServices.Any())
-                throw new Exception($"No event handlers registered for this domain event!");
-            
-            var eventHandlers = eventHandlerServices
-                .Select(handler => (AbstractDomainEventHandler)Activator.CreateInstance(genericWrapperType, handler))
+            var domainEventHandlerInterfaceType = typeof(IDomainEventHandler<>).MakeGenericType(domainEvent.GetType());
+            var genericBaseType = typeof(BaseEventHandler<>).MakeGenericType(domainEvent.GetType());
+            var domainEventHandlers = _serviceProvider.GetServices(domainEventHandlerInterfaceType)
                 .ToList();
 
-            eventHandlers.ForEach(it => it.Handle(abstractDomainEvent));
+            if (!domainEventHandlers.Any())
+                throw new Exception($"No event handlers registered for this domain event!");
+            
+            var eventHandlers = domainEventHandlers
+                .Select(handler => (IEventHandler)Activator.CreateInstance(genericBaseType, handler))
+                .ToList();
+
+            eventHandlers.ForEach(it => it.Handle(domainEvent));
         }
     }
 }

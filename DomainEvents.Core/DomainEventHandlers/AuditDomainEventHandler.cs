@@ -8,7 +8,7 @@ namespace DomainEvents.Core.DomainEventHandlers
     public class AuditDomainEventHandler : IDomainEventHandler<AuditDomainEvent>
     {
         private readonly EfContext _efContext;
-
+        
         public AuditDomainEventHandler(EfContext efContext)
         {
             _efContext = efContext;

@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using DomainEvents.Core.DomainEvents.Abstract;
+using DomainEvents.Core.DomainEvents.Interfaces;
 
 namespace DomainEvents.Core.Data.Entities
 {
     public class AuditLog : IEntity
     {
         public int Id { get; private set; }
-        public DateTime DateTime { get; private set; }
-        public string Description { get; private set; }
+        public DateTime DateTime { get; private init; }
+        public string Description { get; private init; }
 
         public static AuditLog Create(string description)
         {
@@ -21,6 +21,6 @@ namespace DomainEvents.Core.Data.Entities
         }
 
         [NotMapped]
-        public ICollection<AbstractDomainEvent> DomainEvents { get; set; } = new List<AbstractDomainEvent>();
+        public ICollection<IDomainEvent> DomainEvents { get; } = new List<IDomainEvent>();
     }
 }
